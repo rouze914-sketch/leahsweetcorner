@@ -21,6 +21,7 @@
             color: var(--text-color);
             margin: 0;
             padding: 20px;
+            padding-bottom: 100px;
         }
 
         header {
@@ -51,9 +52,9 @@
 
         .catalog {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto 40px auto;
         }
 
@@ -64,24 +65,28 @@
             box-shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
             text-align: center;
             border: 1px solid #bbf7d0;
-            transition: transform 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product-name {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #6b7280;
             margin-bottom: 10px;
         }
 
         .product-price {
             color: var(--accent-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .counter {
@@ -89,7 +94,7 @@
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .counter button {
@@ -129,6 +134,7 @@
             align-items: center;
             box-sizing: border-box;
             border-top: 2px solid #bbf7d0;
+            z-index: 100;
         }
 
         .cart-total {
@@ -156,7 +162,6 @@
 <body>
 
     <header>
-        <!-- Cambiamos aquí para que busque la imagen tal como la subiste -->
         <img src="image.jpg" alt="Leah's Sweet Corner Logo" class="logo">
         <h1>Leah's Sweet Corner</h1>
         <div class="subtitle">¡Postres hechos con amor! Elige tus favoritos y pídelos al WhatsApp.</div>
@@ -171,17 +176,27 @@
 
     <script>
         const products = [
-            { id: 1, name: "Pastel de Chocolate", price: 15.00, qty: 0 },
-            { id: 2, name: "Cupcake de Fresa", price: 3.50, qty: 0 },
-            { id: 3, name: "Pay de Limón", price: 12.00, qty: 0 },
-            { id: 4, name: "Galleta con Chispa", price: 2.50, qty: 0 }
+            // Carlotas
+            { id: 1, name: "Carlota de Limón (Vaso Pequeño)", desc: "Cremosa con galletas María", price: 100.00, qty: 0 },
+            { id: 2, name: "Carlota de Limón (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, qty: 0 },
+            { id: 3, name: "Carlota de Chinola (Vaso Pequeño)", desc: "Con toque tropical de chinola", price: 100.00, qty: 0 },
+            { id: 4, name: "Carlota de Chinola (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, qty: 0 },
+            { id: 5, name: "Carlota de Fresa (Vaso Pequeño)", desc: "Delicia cremosa de fresa", price: 100.00, qty: 0 },
+            { id: 6, name: "Carlota de Fresa (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, qty: 0 },
+
+            // Cheesecakes
+            { id: 7, name: "Cheesecake de Limón (Completo)", desc: "Precio varía según el tamaño", price: 500.00, qty: 0 },
+            { id: 8, name: "Cheesecake de Chinola (Completo)", desc: "Precio varía según el tamaño", price: 550.00, qty: 0 },
+            { id: 9, name: "Cheesecake de Fresa (Completo)", desc: "Precio varía según el tamaño", price: 550.00, qty: 0 },
+            { id: 10, name: "Cheesecake de Oreo (Completo)", desc: "Precio varía según el tamaño", price: 550.00, qty: 0 }
         ];
 
         const catalogEl = document.getElementById('catalog');
         const cartTotalEl = document.getElementById('cartTotal');
         const whatsappLinkEl = document.getElementById('whatsappLink');
 
-        const phoneNumber = "1234567890"; 
+        // Reemplaza con el número de WhatsApp real de tu amiga (sin el +, con código de país)
+        const phoneNumber = "18298173717"; 
 
         function renderCatalog() {
             catalogEl.innerHTML = '';
@@ -192,13 +207,14 @@
                 total += product.price * product.qty;
 
                 if (product.qty > 0) {
-                    messageList.push(`- ${product.qty}x ${product.name}`);
+                    messageList.push(`- ${product.qty}x ${product.name} ($${(product.price * product.qty).toFixed(2)})`);
                 }
 
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
                     <div class="product-name">${product.name}</div>
+                    <div class="product-desc">${product.desc}</div>
                     <div class="product-price">$${product.price.toFixed(2)}</div>
                     <div class="counter">
                         <button onclick="changeQty(${product.id}, -1)">-</button>
