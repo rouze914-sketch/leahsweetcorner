@@ -1,18 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leah's Sweet Corner | Pedidos por WhatsApp</title>
+    <title>Leah's Sweet Corner | Postres y pedidos</title>
+
     <style>
         :root {
-            --bg-color: #f0fdf4;        
-            --card-bg: #ffffff;         
-            --text-color: #065f46;      
-            --text-muted: #047857;      
-            --accent-color: #ec4899;    
-            --accent-hover: #db2777;    
-            --tag-bg: #fbcfe8;          
+            --bg-color: #f0fdf4;
+            --card-bg: #ffffff;
+            --text-color: #065f46;
+            --text-muted: #047857;
+            --accent-color: #ec4899;
+            --accent-hover: #db2777;
+            --tag-bg: #fbcfe8;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -40,12 +46,17 @@
             font-size: 1.1rem;
         }
 
+        .section-title {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+
         .catalog {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto 40px auto;
+            max-width: 1100px;
+            margin: 0 auto 40px;
         }
 
         .product-card {
@@ -62,8 +73,10 @@
 
         .product-img {
             width: 100%;
-            height: 180px;
+            height: 210px;
             object-fit: cover;
+            display: block;
+            background-color: #fff7fb;
         }
 
         .product-info {
@@ -71,9 +84,9 @@
         }
 
         .product-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .product-desc {
@@ -84,7 +97,7 @@
 
         .product-price {
             color: var(--accent-color);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -94,20 +107,19 @@
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin-top: 10px;
-            padding-bottom: 15px;
+            padding: 0 15px 18px;
         }
 
         .counter button {
             background-color: var(--tag-bg);
             color: var(--accent-color);
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
         .counter button:hover {
@@ -118,8 +130,7 @@
         .quantity {
             font-size: 1.1rem;
             font-weight: bold;
-            width: 20px;
-            text-align: center;
+            min-width: 20px;
         }
 
         .cart-bar {
@@ -127,19 +138,19 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #ffffff;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            padding: 15px 20px;
+            background-color: white;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            box-sizing: border-box;
+            gap: 12px;
             border-top: 2px solid #bbf7d0;
             z-index: 100;
         }
 
         .cart-total {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: var(--text-color);
         }
@@ -147,90 +158,320 @@
         .whatsapp-btn {
             background-color: #25d366;
             color: white;
-            padding: 12px 24px;
+            padding: 12px 18px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.2s;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            text-align: center;
         }
 
         .whatsapp-btn:hover {
             background-color: #20ba5a;
         }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                padding-bottom: 100px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .catalog {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .product-img {
+                height: 145px;
+            }
+
+            .product-info {
+                padding: 10px;
+            }
+
+            .product-name {
+                font-size: 1rem;
+            }
+
+            .cart-bar {
+                padding: 10px;
+            }
+
+            .cart-total {
+                font-size: 0.95rem;
+            }
+
+            .whatsapp-btn {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>Leah's Sweet Corner</h1>
-        <div class="subtitle">¡Postres hechos con amor! Elige tus favoritos y pídelos al WhatsApp.</div>
+        <h1>Leah's Sweet Corner 🍰</h1>
+        <div class="subtitle">
+            ¡Postres hechos con amor! Elige tus favoritos y haz tu pedido.
+        </div>
     </header>
 
-    <div class="catalog" id="catalog"></div>
+    <h2 class="section-title">🍋 Carlota en vaso</h2>
+    <div class="catalog" id="carlotaCatalog"></div>
+
+    <h2 class="section-title">🍰 Cheesecakes</h2>
+    <div class="catalog" id="cheesecakeCatalog"></div>
 
     <div class="cart-bar">
-        <div class="cart-total" id="cartTotal">Total: $0.00</div>
-        <a id="whatsappLink" href="#" target="_blank" class="whatsapp-btn">Pedir por WhatsApp 📱</a>
+        <div class="cart-total" id="cartTotal">Total: RD$0</div>
+        <a id="whatsappLink"
+           href="#"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="whatsapp-btn">
+            Pedir por WhatsApp 📱
+        </a>
     </div>
 
     <script>
         const products = [
-            { id: 1, name: "Carlota de Limón (Vaso Pequeño)", desc: "Cremosa con galletas María", price: 100.00, img: "limon.jpg", qty: 0 },
-            { id: 2, name: "Carlota de Limón (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "limon.jpg", qty: 0 },
-            { id: 3, name: "Carlota de Chinola (Vaso Pequeño)", desc: "Con toque tropical de chinola", price: 100.00, img: "chinola.jpg", qty: 0 },
-            { id: 4, name: "Carlota de Chinola (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "chinola.jpg", qty: 0 },
-            { id: 5, name: "Carlota de Fresa (Vaso Pequeño)", desc: "Delicia cremosa de fresa", price: 100.00, img: "fresa.jpg", qty: 0 },
-            { id: 6, name: "Carlota de Fresa (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "fresa.jpg", qty: 0 },
-            { id: 7, name: "Carlota de Oreo (Vaso Pequeño)", desc: "Cremosa con trocitos de Oreo", price: 100.00, img: "oreo.jpg", qty: 0 },
-            { id: 8, name: "Carlota de Oreo (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "oreo.jpg", qty: 0 },
-            { id: 9, name: "Porción de Cheesecake de Chinola", desc: "Porción individual de cheesecake de chinola", price: 200.00, img: "chinola.jpg", qty: 0 },
-            { id: 10, name: "Cheesecake de Chinola (Grande)", desc: "Cheesecake completo de chinola", price: 1200.00, img: "chinola.jpg", qty: 0 },
-            { id: 11, name: "Porción de Cheesecake de Fresa", desc: "Porción individual de cheesecake de fresa", price: 200.00, img: "fresa.jpg", qty: 0 },
-            { id: 12, name: "Cheesecake de Fresa (Grande)", desc: "Cheesecake completo de fresa", price: 1200.00, img: "fresa.jpg", qty: 0 }
+            // CARLOTAS PEQUEÑAS: RD$100
+            {
+                id: 1,
+                category: "carlota",
+                name: "Carlota de Fresa",
+                desc: "Vaso pequeño",
+                price: 100,
+                img: "fresa.jpg",
+                qty: 0
+            },
+            {
+                id: 2,
+                category: "carlota",
+                name: "Carlota de Chinola",
+                desc: "Vaso pequeño",
+                price: 100,
+                img: "chinola.jpg",
+                qty: 0
+            },
+            {
+                id: 3,
+                category: "carlota",
+                name: "Carlota de Limón",
+                desc: "Vaso pequeño",
+                price: 100,
+                img: "limon.jpg",
+                qty: 0
+            },
+            {
+                id: 4,
+                category: "carlota",
+                name: "Carlota de Oreo",
+                desc: "Vaso pequeño",
+                price: 100,
+                img: "oreo.jpg",
+                qty: 0
+            },
+
+            // CARLOTAS GRANDES: RD$175
+            {
+                id: 5,
+                category: "carlota",
+                name: "Carlota de Fresa",
+                desc: "Vaso grande",
+                price: 175,
+                img: "fresa.jpg",
+                qty: 0
+            },
+            {
+                id: 6,
+                category: "carlota",
+                name: "Carlota de Chinola",
+                desc: "Vaso grande",
+                price: 175,
+                img: "chinola.jpg",
+                qty: 0
+            },
+            {
+                id: 7,
+                category: "carlota",
+                name: "Carlota de Limón",
+                desc: "Vaso grande",
+                price: 175,
+                img: "limon.jpg",
+                qty: 0
+            },
+            {
+                id: 8,
+                category: "carlota",
+                name: "Carlota de Oreo",
+                desc: "Vaso grande",
+                price: 175,
+                img: "oreo.jpg",
+                qty: 0
+            },
+
+            // CHEESECAKES POR PORCIÓN: RD$200
+            {
+                id: 9,
+                category: "cheesecake",
+                name: "Cheesecake de Chinola",
+                desc: "Porción individual",
+                price: 200,
+                img: "chinola.jpg",
+                qty: 0
+            },
+            {
+                id: 10,
+                category: "cheesecake",
+                name: "Cheesecake de Limón",
+                desc: "Porción individual",
+                price: 200,
+                img: "limon.jpg",
+                qty: 0
+            },
+            {
+                id: 11,
+                category: "cheesecake",
+                name: "Cheesecake de Fresa",
+                desc: "Porción individual",
+                price: 200,
+                img: "fresa.jpg",
+                qty: 0
+            },
+            {
+                id: 12,
+                category: "cheesecake",
+                name: "Cheesecake de Oreo",
+                desc: "Porción individual",
+                price: 200,
+                img: "oreo.jpg",
+                qty: 0
+            },
+
+            // CHEESECAKES GRANDES: RD$1,200
+            {
+                id: 13,
+                category: "cheesecake",
+                name: "Cheesecake de Chinola",
+                desc: "Cheesecake entero grande",
+                price: 1200,
+                img: "chinola.jpg",
+                qty: 0
+            },
+            {
+                id: 14,
+                category: "cheesecake",
+                name: "Cheesecake de Limón",
+                desc: "Cheesecake entero grande",
+                price: 1200,
+                img: "limon.jpg",
+                qty: 0
+            },
+            {
+                id: 15,
+                category: "cheesecake",
+                name: "Cheesecake de Fresa",
+                desc: "Cheesecake entero grande",
+                price: 1200,
+                img: "fresa.jpg",
+                qty: 0
+            },
+            {
+                id: 16,
+                category: "cheesecake",
+                name: "Cheesecake de Oreo",
+                desc: "Cheesecake entero grande",
+                price: 1200,
+                img: "oreo.jpg",
+                qty: 0
+            }
         ];
 
-        const catalogEl = document.getElementById('catalog');
-        const cartTotalEl = document.getElementById('cartTotal');
-        const whatsappLinkEl = document.getElementById('whatsappLink');
-        const phoneNumber = "18298173717"; 
+        const carlotaCatalog = document.getElementById("carlotaCatalog");
+        const cheesecakeCatalog = document.getElementById("cheesecakeCatalog");
+        const cartTotalEl = document.getElementById("cartTotal");
+        const whatsappLinkEl = document.getElementById("whatsappLink");
+
+        // Conserva el número de WhatsApp configurado en tu código.
+        const phoneNumber = "18298173717";
+
+        function money(amount) {
+            return "RD$" + amount.toLocaleString("en-US");
+        }
 
         function renderCatalog() {
-            catalogEl.innerHTML = '';
+            carlotaCatalog.innerHTML = "";
+            cheesecakeCatalog.innerHTML = "";
+
             let total = 0;
-            let messageList = [];
+            const messageList = [];
 
             products.forEach(product => {
                 total += product.price * product.qty;
 
                 if (product.qty > 0) {
-                    messageList.push(`- ${product.qty}x ${product.name} ($${(product.price * product.qty).toFixed(2)})`);
+                    messageList.push(
+                        `- ${product.qty} x ${product.name} (${product.desc}) = ${money(product.price * product.qty)}`
+                    );
                 }
 
-                const card = document.createElement('div');
-                card.className = 'product-card';
+                const card = document.createElement("div");
+                card.className = "product-card";
+
                 card.innerHTML = `
-                    <img src="mi-foto.jpg" alt="Mi fotografía" width="300">
+                    <img
+                        src="${product.img}"
+                        alt="${product.name}"
+                        class="product-img"
+                        loading="lazy"
+                    >
+
                     <div class="product-info">
                         <div class="product-name">${product.name}</div>
                         <div class="product-desc">${product.desc}</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-price">${money(product.price)}</div>
                     </div>
+
                     <div class="counter">
-                        <button onclick="changeQty(${product.id}, -1)">-</button>
+                        <button
+                            type="button"
+                            aria-label="Quitar ${product.name}"
+                            onclick="changeQty(${product.id}, -1)">−</button>
+
                         <span class="quantity">${product.qty}</span>
-                        <button onclick="changeQty(${product.id}, 1)">+</button>
+
+                        <button
+                            type="button"
+                            aria-label="Agregar ${product.name}"
+                            onclick="changeQty(${product.id}, 1)">+</button>
                     </div>
                 `;
-                catalogEl.appendChild(card);
+
+                if (product.category === "carlota") {
+                    carlotaCatalog.appendChild(card);
+                } else {
+                    cheesecakeCatalog.appendChild(card);
+                }
             });
 
-            cartTotalEl.textContent = `Total: $${total.toFixed(2)}`;
+            cartTotalEl.textContent = "Total: " + money(total);
 
             if (messageList.length > 0) {
-                let text = `¡Hola! Me gustaría hacer el siguiente pedido en Leah's Sweet Corner:\n\n` + messageList.join('\n') + `\n\n*Total a pagar: $${total.toFixed(2)}*`;
-                let encodedText = encodeURIComponent(text);
-                whatsappLinkEl.href = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+                const message =
+                    "¡Hola! Me gustaría hacer un pedido en Leah's Sweet Corner:\n\n" +
+                    messageList.join("\n") +
+                    "\n\nTotal del pedido: " + money(total);
+
+                whatsappLinkEl.href =
+                    "https://wa.me/" + phoneNumber +
+                    "?text=" + encodeURIComponent(message);
+
                 whatsappLinkEl.style.pointerEvents = "auto";
                 whatsappLinkEl.style.opacity = "1";
             } else {
@@ -241,15 +482,17 @@
         }
 
         function changeQty(id, change) {
-            const product = products.find(p => p.id === id);
+            const product = products.find(item => item.id === id);
+
             if (product) {
-                product.qty += change;
-                if (product.qty < 0) product.qty = 0;
+                product.qty = Math.max(0, product.qty + change);
                 renderCatalog();
             }
         }
 
         renderCatalog();
     </script>
+
 </body>
 </html>
+
