@@ -176,19 +176,21 @@
 
     <script>
         const products = [
-            // Carlotas en vasito
-            { id: 1, name: "Carlota de Limón (Vaso Pequeño)", desc: "Cremosa con galletas María", price: 100.00, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 2, name: "Carlota de Limón (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 3, name: "Carlota de Chinola (Vaso Pequeño)", desc: "Con toque tropical de chinola", price: 100.00, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 4, name: "Carlota de Chinola (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 5, name: "Carlota de Fresa (Vaso Pequeño)", desc: "Delicia cremosa de fresa", price: 100.00, img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 6, name: "Carlota de Fresa (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            // Carlotas
+            { id: 1, name: "Carlota de Limón (Vaso Pequeño)", desc: "Cremosa con galletas María", price: 100.00, img: "https://i.pinimg.com/736x/98/19/25/981925525000869167.jpg", qty: 0 },
+            { id: 2, name: "Carlota de Limón (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://i.pinimg.com/736x/98/19/25/981925525000869167.jpg", qty: 0 },
+            { id: 3, name: "Carlota de Chinola (Vaso Pequeño)", desc: "Con toque tropical de chinola", price: 100.00, img: "https://i.pinimg.com/736x/41/45/42/414542340713028896.jpg", qty: 0 },
+            { id: 4, name: "Carlota de Chinola (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://i.pinimg.com/736x/41/45/42/414542340713028896.jpg", qty: 0 },
+            { id: 5, name: "Carlota de Fresa (Vaso Pequeño)", desc: "Delicia cremosa de fresa", price: 100.00, img: "https://i.pinimg.com/736x/58/61/71/586171707756001199.jpg", qty: 0 },
+            { id: 6, name: "Carlota de Fresa (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://i.pinimg.com/736x/58/61/71/586171707756001199.jpg", qty: 0 },
+            { id: 7, name: "Carlota de Oreo (Vaso Pequeño)", desc: "Cremosa con trocitos de Oreo", price: 100.00, img: "https://i.pinimg.com/736x/81/06/48/810648001720506320.jpg", qty: 0 },
+            { id: 8, name: "Carlota de Oreo (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://i.pinimg.com/736x/81/06/48/810648001720506320.jpg", qty: 0 },
 
-            // Cheesecakes Grandes por sabor
-            { id: 7, name: "Cheesecake de Limón (Grande)", desc: "Delicioso cheesecake completo de limón", price: 1200.00, img: "https://images.unsplash.com/photo-1524351199678-941a58a3df50?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 8, name: "Cheesecake de Chinola (Grande)", desc: "Delicioso cheesecake completo de chinola", price: 1200.00, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 9, name: "Cheesecake de Fresa (Grande)", desc: "Delicioso cheesecake completo de fresa", price: 1200.00, img: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 10, name: "Cheesecake de Oreo (Grande)", desc: "Delicioso cheesecake completo de oreo", price: 1200.00, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80", qty: 0 }
+            // Cheesecakes (Porciones y Grandes)
+            { id: 9, name: "Porción de Cheesecake de Chinola", desc: "Porción individual de cheesecake de chinola", price: 200.00, img: "https://i.pinimg.com/736x/95/37/07/953707658595789391.jpg", qty: 0 },
+            { id: 10, name: "Cheesecake de Chinola (Grande)", desc: "Cheesecake completo de chinola", price: 1200.00, img: "https://i.pinimg.com/736x/95/37/07/953707658595789391.jpg", qty: 0 },
+            { id: 11, name: "Porción de Cheesecake de Fresa", desc: "Porción individual de cheesecake de fresa", price: 200.00, img: "https://i.pinimg.com/736x/86/29/31/862931978642215905.jpg", qty: 0 },
+            { id: 12, name: "Cheesecake de Fresa (Grande)", desc: "Cheesecake completo de fresa", price: 1200.00, img: "https://i.pinimg.com/736x/86/29/31/862931978642215905.jpg", qty: 0 }
         ];
 
         const catalogEl = document.getElementById('catalog');
