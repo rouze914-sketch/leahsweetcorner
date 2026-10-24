@@ -29,16 +29,6 @@
             margin-bottom: 30px;
         }
 
-        .logo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(6, 95, 70, 0.15);
-            border: 3px solid #ffffff;
-        }
-
         h1 {
             font-size: 2.3rem;
             margin-bottom: 5px;
@@ -173,7 +163,6 @@
 <body>
 
     <header>
-        <img src="image.jpg" alt="Leah's Sweet Corner Logo" class="logo">
         <h1>Leah's Sweet Corner</h1>
         <div class="subtitle">¡Postres hechos con amor! Elige tus favoritos y pídelos al WhatsApp.</div>
     </header>
@@ -187,16 +176,19 @@
 
     <script>
         const products = [
-            { id: 1, name: "Carlota de Limón (Vaso Pequeño)", desc: "Cremosa con galletas María", price: 100.00, img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 2, name: "Carlota de Limón (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 3, name: "Carlota de Chinola (Vaso Pequeño)", desc: "Con toque tropical de chinola", price: 100.00, img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 4, name: "Carlota de Chinola (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 5, name: "Carlota de Fresa (Vaso Pequeño)", desc: "Delicia cremosa de fresa", price: 100.00, img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 6, name: "Carlota de Fresa (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 7, name: "Cheesecake de Limón (Grande)", desc: "Delicioso cheesecake completo", price: 1200.00, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 8, name: "Cheesecake de Chinola (Grande)", desc: "Delicioso cheesecake completo", price: 1200.00, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 9, name: "Cheesecake de Fresa (Grande)", desc: "Delicioso cheesecake completo", price: 1200.00, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80", qty: 0 },
-            { id: 10, name: "Cheesecake de Oreo (Grande)", desc: "Delicioso cheesecake completo", price: 1200.00, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80", qty: 0 }
+            // Carlotas en vasito
+            { id: 1, name: "Carlota de Limón (Vaso Pequeño)", desc: "Cremosa con galletas María", price: 100.00, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 2, name: "Carlota de Limón (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 3, name: "Carlota de Chinola (Vaso Pequeño)", desc: "Con toque tropical de chinola", price: 100.00, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 4, name: "Carlota de Chinola (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 5, name: "Carlota de Fresa (Vaso Pequeño)", desc: "Delicia cremosa de fresa", price: 100.00, img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 6, name: "Carlota de Fresa (Vaso Grande)", desc: "Formato individual más grande", price: 175.00, img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80", qty: 0 },
+
+            // Cheesecakes Grandes por sabor
+            { id: 7, name: "Cheesecake de Limón (Grande)", desc: "Delicioso cheesecake completo de limón", price: 1200.00, img: "https://images.unsplash.com/photo-1524351199678-941a58a3df50?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 8, name: "Cheesecake de Chinola (Grande)", desc: "Delicioso cheesecake completo de chinola", price: 1200.00, img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 9, name: "Cheesecake de Fresa (Grande)", desc: "Delicioso cheesecake completo de fresa", price: 1200.00, img: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=500&q=80", qty: 0 },
+            { id: 10, name: "Cheesecake de Oreo (Grande)", desc: "Delicioso cheesecake completo de oreo", price: 1200.00, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80", qty: 0 }
         ];
 
         const catalogEl = document.getElementById('catalog');
@@ -260,5 +252,7 @@
 
         renderCatalog();
     </script>
+</body>
+</html>
 </body>
 </html>
