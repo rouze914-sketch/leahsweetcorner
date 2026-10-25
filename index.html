@@ -1,498 +1,372 @@
 
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leah's Sweet Corner | Postres y pedidos</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leah's Sweet Corner | Postres hechos con amor</title>
+  <meta name="description" content="Carlotas y cheesecakes deliciosos. Elige tu sabor favorito y haz tu pedido.">
+  <style>
+    :root {
+      --pink: #f8dce5;
+      --dark: #492b35;
+      --cream: #fffaf6;
+      --gold: #bd8a53;
+      --white: #fff;
+    }
 
-    <style>
-        :root {
-            --bg-color: #f0fdf4;
-            --card-bg: #ffffff;
-            --text-color: #065f46;
-            --text-muted: #047857;
-            --accent-color: #ec4899;
-            --accent-hover: #db2777;
-            --tag-bg: #fbcfe8;
-        }
+    * { box-sizing: border-box; }
 
-        * {
-            box-sizing: border-box;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: var(--cream);
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            padding-bottom: 100px;
-        }
+    header {
+      text-align: center;
+      padding: 38px 18px;
+      background: linear-gradient(135deg, #f8dce5, #fff0df);
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    header h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      margin: 0 0 10px;
+    }
 
-        h1 {
-            font-size: 2.3rem;
-            margin-bottom: 5px;
-            color: var(--text-color);
-        }
+    header p { margin: 0; font-size: 1.05rem; }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
+    .notice {
+      text-align: center;
+      padding: 12px;
+      background: #fff;
+      font-size: .95rem;
+    }
 
-        .section-title {
-            text-align: center;
-            margin: 30px 0 20px;
-        }
+    .intro {
+      text-align: center;
+      padding: 28px 16px 8px;
+    }
 
-        .catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto 40px;
-        }
+    .intro h2 {
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
 
-        .product-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(236, 72, 153, 0.1);
-            text-align: center;
-            border: 1px solid #bbf7d0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+    .intro p { margin-top: 0; }
 
-        .product-img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            display: block;
-            background-color: #fff7fb;
-        }
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 10px 18px 45px;
+    }
 
-        .product-info {
-            padding: 15px;
-        }
+    .section-title {
+      margin: 35px 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--pink);
+      font-family: Georgia, serif;
+      font-size: 1.7rem;
+    }
 
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+    }
 
-        .product-desc {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-bottom: 10px;
-        }
+    .product {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px #492b3510;
+      border: 1px solid #f1e4e5;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .product-price {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    .product img {
+      display: block;
+      width: 100%;
+      height: 235px;
+      object-fit: cover;
+      background: #f4e9e7;
+    }
 
-        .counter {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            padding: 0 15px 18px;
-        }
+    .product-info {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
 
-        .counter button {
-            background-color: var(--tag-bg);
-            color: var(--accent-color);
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .product h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .product .flavor { color: #806671; margin: 0 0 10px; }
+    .price { font-weight: bold; color: #8d4e63; font-size: 1.2rem; margin: 0 0 14px; }
 
-        .counter button:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
+    .quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: auto;
+    }
 
-        .quantity {
-            font-size: 1.1rem;
-            font-weight: bold;
-            min-width: 20px;
-        }
+    .quantity button {
+      width: 35px;
+      height: 35px;
+      border: 0;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      background: var(--pink);
+      color: var(--dark);
+      cursor: pointer;
+    }
 
-        .cart-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-            border-top: 2px solid #bbf7d0;
-            z-index: 100;
-        }
+    .quantity span { min-width: 20px; text-align: center; font-weight: bold; }
 
-        .cart-total {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--text-color);
-        }
+    .cart {
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      background: #fff;
+      padding: 15px 18px;
+      border-top: 1px solid #ead8dc;
+      box-shadow: 0 -4px 18px #492b3510;
+    }
 
-        .whatsapp-btn {
-            background-color: #25d366;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-        }
+    .cart-inner {
+      max-width: 1160px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
 
-        .whatsapp-btn:hover {
-            background-color: #20ba5a;
-        }
+    .cart-total { font-size: 1.15rem; font-weight: bold; }
 
-        @media (max-width: 480px) {
-            body {
-                padding: 12px;
-                padding-bottom: 100px;
-            }
+    .order-button {
+      border: 0;
+      border-radius: 30px;
+      padding: 14px 22px;
+      background: #267b4b;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-            h1 {
-                font-size: 1.8rem;
-            }
+    .order-button:disabled { opacity: .5; cursor: not-allowed; }
 
-            .catalog {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 12px;
-            }
+    footer {
+      text-align: center;
+      padding: 30px 15px 100px;
+      background: var(--pink);
+      line-height: 1.7;
+    }
 
-            .product-img {
-                height: 145px;
-            }
-
-            .product-info {
-                padding: 10px;
-            }
-
-            .product-name {
-                font-size: 1rem;
-            }
-
-            .cart-bar {
-                padding: 10px;
-            }
-
-            .cart-total {
-                font-size: 0.95rem;
-            }
-
-            .whatsapp-btn {
-                padding: 10px;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    @media (max-width: 480px) {
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .product img { height: 160px; }
+      .product-info { padding: 12px; }
+      .product h3 { font-size: .98rem; }
+      .product .flavor { font-size: .9rem; }
+      .price { font-size: 1rem; }
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <h1>Leah's Sweet Corner</h1>
+    <p>✨ Postres hechos con amor ✨</p>
+  </header>
 
-    <header>
-        <h1>Leah's Sweet Corner 🍰</h1>
-        <div class="subtitle">
-            ¡Postres hechos con amor! Elige tus favoritos y haz tu pedido.
-        </div>
-    </header>
+  <div class="notice">
+    🍓 Elige tus sabores favoritos y prepara tu pedido.
+  </div>
 
-    <h2 class="section-title">🍋 Carlota en vaso</h2>
-    <div class="catalog" id="carlotaCatalog"></div>
+  <div class="intro">
+    <h2>Un dulce momento</h2>
+    <p>Preparados para endulzar tu día 💕</p>
+  </div>
 
-    <h2 class="section-title">🍰 Cheesecakes</h2>
-    <div class="catalog" id="cheesecakeCatalog"></div>
+  <main>
+    <h2 class="section-title">🍓 Carlota en vaso pequeño</h2>
+    <div class="products" id="small-carlotas"></div>
 
-    <div class="cart-bar">
-        <div class="cart-total" id="cartTotal">Total: RD$0</div>
-        <a id="whatsappLink"
-           href="#"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="whatsapp-btn">
-            Pedir por WhatsApp 📱
-        </a>
+    <h2 class="section-title">🍰 Carlota en vaso grande</h2>
+    <div class="products" id="large-carlotas"></div>
+
+    <h2 class="section-title">🍰 Cheesecakes por porción</h2>
+    <div class="products" id="cheesecake-slices"></div>
+
+    <h2 class="section-title">🎂 Cheesecakes completos</h2>
+    <div class="products" id="whole-cheesecakes"></div>
+  </main>
+
+  <section class="cart">
+    <div class="cart-inner">
+      <div>
+        <div id="item-count">0 productos seleccionados</div>
+        <div class="cart-total">Total: RD$<span id="total">0</span></div>
+      </div>
+      <button class="order-button" id="order-button" onclick="placeOrder()" disabled>
+        Pedir por WhatsApp
+      </button>
     </div>
+  </section>
 
-    <script>
-        const products = 
-            // CARLOTAS PEQUEÑAS: RD$100
-            {
-                id: 1,
-                category: "carlota",
-                name: "Carlota de Fresa",
-                desc: "Vaso pequeño",
-                price: 100,
-                img: "Carlota_Vaso_Pequeno_Fresa[1].jpg",
-                qty: 0
-            },
-            {
-                id: 2,
-                category: "carlota",
-                name: "Carlota de Chinola",
-                desc: "Vaso pequeño",
-                price: 100,
-                img: "Carlota_Vaso_Pequeno_Chinola[1].jpg",
-                qty: 0
-            },
-            {
-                id: 3,
-                category: "carlota",
-                name: "Carlota de Limón",
-                desc: "Vaso pequeño",
-                price: 100,
-                img: "Carlota_Vaso_Pequeno_Limon[1].jpg",
-                qty: 0
-            },
-            {
-                id: 4,
-                category: "carlota",
-                name: "Carlota de Oreo",
-                desc: "Vaso pequeño",
-                price: 100,
-                img: "Carlota_Vaso_Pequeno_Oreo[1].jpg",
-                qty: 0
-            },
+  <footer>
+    <strong>Leah's Sweet Corner</strong><br>
+    Un toque dulce para cada ocasión 💗<br>
+    Gracias por apoyar nuestro pequeño negocio.
+  </footer>
 
-            // CARLOTAS GRANDES: RD$175
-            {
-                id: 5,
-                category: "carlota",
-                name: "Carlota de Fresa",
-                desc: "Vaso grande",
-                price: 175,
-                img: "Carlota_Vaso_Grande_Fresa[1].jpg",
-                qty: 0
-            },
-            {
-                id: 6,
-                category: "carlota",
-                name: "Carlota de Chinola",
-                desc: "Vaso grande",
-                price: 175,
-                img: "Carlota_Vaso_Grande_Chinola[1].jpg",
-                qty: 0
-            },
-            {
-                id: 7,
-                category: "carlota",
-                name: "Carlota de Limón",
-                desc: "Vaso grande",
-                price: 175,
-                img: "Carlota_Vaso_Grande_Limon[1].jpg",
-                qty: 0
-            },
-            {
-                id: 8,
-                category: "carlota",
-                name: "Carlota de Oreo",
-                desc: "Vaso grande",
-                price: 175,
-                img: "Carlota_Vaso_Grande_Oreo[1].jpg",
-                qty: 0
-            },
+  <script>
+    const flavors = [
+      { name: "Fresa", file: "Fresa" },
+      { name: "Chinola", file: "Chinola" },
+      { name: "Limón", file: "Limon" },
+      { name: "Oreo", file: "Oreo" }
+    ];
 
-            // CHEESECAKES POR PORCIÓN: RD$200
-            {
-                id: 9,
-                category: "cheesecake",
-                name: "Cheesecake de Chinola",
-                desc: "Porción individual",
-                price: 200,
-                img: "chinola[1].jpg",
-                qty: 0
-            },
-            {
-                id: 10,
-                category: "cheesecake",
-                name: "Cheesecake de Limón",
-                desc: "Porción individual",
-                price: 200,
-                img: "limon[1].jpg",
-                qty: 0
-            },
-            {
-                id: 11,
-                category: "cheesecake",
-                name: "Cheesecake de Fresa",
-                desc: "Porción individual",
-                price: 200,
-                img: "fresa[1].jpg",
-                qty: 0
-            },
-            {
-                id: 12,
-                category: "cheesecake",
-                name: "Cheesecake de Oreo",
-                desc: "Porción individual",
-                price: 200,
-                img: "oreo[1].jpg",
-                qty: 0
-            },
+    const products = [
+      ...flavors.map(f => ({
+        id: "small-" + f.file,
+        name: "Carlota en vaso pequeño",
+        flavor: f.name,
+        price: 100,
+        image: "Carlota_Vaso_Pequeno_" + f.file + ".jpg",
+        section: "small-carlotas"
+      })),
+      ...flavors.map(f => ({
+        id: "large-" + f.file,
+        name: "Carlota en vaso grande",
+        flavor: f.name,
+        price: 175,
+        image: "Carlota_Vaso_Grande_" + f.file + ".jpg",
+        section: "large-carlotas"
+      })),
+      ...flavors.map(f => ({
+        id: "slice-" + f.file,
+        name: "Cheesecake por porción",
+        flavor: f.name,
+        price: 200,
+        image: "Cheesecake_Completo_" + f.file + ".jpg",
+        section: "cheesecake-slices"
+      })),
+      ...flavors.map(f => ({
+        id: "whole-" + f.file,
+        name: "Cheesecake completo",
+        flavor: f.name,
+        price: 1200,
+        image: "Cheesecake_Completo_" + f.file + ".jpg",
+        section: "whole-cheesecakes"
+      }))
+    ];
 
-            // CHEESECAKES GRANDES: RD$1,200
-            {
-                id: 13,
-                category: "cheesecake",
-                name: "Cheesecake de Chinola",
-                desc: "Cheesecake entero grande",
-                price: 1200,
-                img: "chinola[1].jpg",
-                qty: 0
-            },
-            {
-                id: 14,
-                category: "cheesecake",
-                name: "Cheesecake de Limón",
-                desc: "Cheesecake entero grande",
-                price: 1200,
-                img: "limon[1].jpg",
-                qty: 0
-            },
-            {
-                id: 15,
-                category: "cheesecake",
-                name: "Cheesecake de Fresa",
-                desc: "Cheesecake entero grande",
-                price: 1200,
-                img: "fresa[1].jpg",
-                qty: 0
-            },
-            {
-                id: 16,
-                category: "cheesecake",
-                name: "Cheesecake de Oreo",
-                desc: "Cheesecake entero grande",
-                price: 1200,
-                img: "oreo[1].jpg",
-                qty: 0
-            }
-        ];
+    const quantities = {};
 
-        const carlotaCatalog = document.getElementById("carlotaCatalog");
-        const cheesecakeCatalog = document.getElementById("cheesecakeCatalog");
-        const cartTotalEl = document.getElementById("cartTotal");
-        const whatsappLinkEl = document.getElementById("whatsappLink");
+    function money(value) {
+      return value.toLocaleString("en-US");
+    }
 
-        // Conserva el número de WhatsApp configurado en tu código.
-        const phoneNumber = "18298173717";
+    function renderProducts() {
+      products.forEach(product => {
+        quantities[product.id] = 0;
 
-        function money(amount) {
-            return "RD$" + amount.toLocaleString("en-US");
+        const card = document.createElement("article");
+        card.className = "product";
+
+        const img = document.createElement("img");
+        img.src = product.image;
+        img.alt = product.name + " de " + product.flavor;
+        img.loading = "lazy";
+        img.onerror = () => {
+          img.onerror = null;
+          img.alt = "Foto pendiente: " + product.name + " de " + product.flavor;
+          img.style.objectFit = "contain";
+          img.src = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="100%" height="100%" fill="#f8dce5"/><text x="50%" y="45%" text-anchor="middle" font-family="Arial" font-size="20" fill="#492b35">Foto pendiente</text><text x="50%" y="57%" text-anchor="middle" font-family="Arial" font-size="15" fill="#492b35">' + product.flavor + '</text></svg>'
+          );
+        };
+
+        const info = document.createElement("div");
+        info.className = "product-info";
+        info.innerHTML = `
+          <h3>${product.name}</h3>
+          <p class="flavor">Sabor: ${product.flavor}</p>
+          <p class="price">RD$${money(product.price)}</p>
+          <div class="quantity">
+            <button type="button" aria-label="Quitar uno"
+              onclick="changeQuantity('${product.id}', -1)">−</button>
+            <span id="qty-${product.id}">0</span>
+            <button type="button" aria-label="Agregar uno"
+              onclick="changeQuantity('${product.id}', 1)">+</button>
+          </div>
+        `;
+
+        card.append(img, info);
+        document.getElementById(product.section).appendChild(card);
+      });
+    }
+
+    function changeQuantity(id, amount) {
+      quantities[id] = Math.max(0, quantities[id] + amount);
+      document.getElementById("qty-" + id).textContent = quantities[id];
+      updateCart();
+    }
+
+    function updateCart() {
+      let total = 0;
+      let count = 0;
+
+      products.forEach(p => {
+        total += p.price * quantities[p.id];
+        count += quantities[p.id];
+      });
+
+      document.getElementById("total").textContent = money(total);
+      document.getElementById("item-count").textContent =
+        count + (count === 1 ? " producto seleccionado" : " productos seleccionados");
+      document.getElementById("order-button").disabled = count === 0;
+    }
+
+    function placeOrder() {
+      const lines = [];
+      let total = 0;
+
+      products.forEach(p => {
+        const qty = quantities[p.id];
+        if (qty > 0) {
+          const subtotal = qty * p.price;
+          total += subtotal;
+          lines.push(`${qty} x ${p.name} - ${p.flavor}: RD$${money(subtotal)}`);
         }
+      });
 
-        function renderCatalog() {
-            carlotaCatalog.innerHTML = "";
-            cheesecakeCatalog.innerHTML = "";
+      if (!lines.length) {
+        alert("Selecciona al menos un producto.");
+        return;
+      }
 
-            let total = 0;
-            const messageList = [];
+      lines.push("");
+      lines.push("Total: RD$" + money(total));
+      const message = "Hola, Leah's Sweet Corner. Quiero hacer este pedido:\n" + lines.join("\n");
+      const phone = "18298173717";
+      window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message), "_blank");
+    }
 
-            products.forEach(product => {
-                total += product.price * product.qty;
-
-                if (product.qty > 0) {
-                    messageList.push(
-                        `- ${product.qty} x ${product.name} (${product.desc}) = ${money(product.price * product.qty)}`
-                    );
-                }
-
-                const card = document.createElement("div");
-                card.className = "product-card";
-
-                card.innerHTML = `
-                    <img
-                        src="${product.img}"
-                        alt="${product.name}"
-                        class="product-img"
-                        loading="lazy"
-                    >
-
-                    <div class="product-info">
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-desc">${product.desc}</div>
-                        <div class="product-price">${money(product.price)}</div>
-                    </div>
-
-                    <div class="counter">
-                        <button
-                            type="button"
-                            aria-label="Quitar ${product.name}"
-                            onclick="changeQty(${product.id}, -1)">−</button>
-
-                        <span class="quantity">${product.qty}</span>
-
-                        <button
-                            type="button"
-                            aria-label="Agregar ${product.name}"
-                            onclick="changeQty(${product.id}, 1)">+</button>
-                    </div>
-                `;
-
-                if (product.category === "carlota") {
-                    carlotaCatalog.appendChild(card);
-                } else {
-                    cheesecakeCatalog.appendChild(card);
-                }
-            });
-
-            cartTotalEl.textContent = "Total: " + money(total);
-
-            if (messageList.length > 0) {
-                const message =
-                    "¡Hola! Me gustaría hacer un pedido en Leah's Sweet Corner:\n\n" +
-                    messageList.join("\n") +
-                    "\n\nTotal del pedido: " + money(total);
-
-                whatsappLinkEl.href =
-                    "https://wa.me/" + phoneNumber +
-                    "?text=" + encodeURIComponent(message);
-
-                whatsappLinkEl.style.pointerEvents = "auto";
-                whatsappLinkEl.style.opacity = "1";
-            } else {
-                whatsappLinkEl.href = "#";
-                whatsappLinkEl.style.pointerEvents = "none";
-                whatsappLinkEl.style.opacity = "0.5";
-            }
-        }
-
-        function changeQty(id, change) {
-            const product = products.find(item => item.id === id);
-
-            if (product) {
-                product.qty = Math.max(0, product.qty + change);
-                renderCatalog();
-            }
-        }
-
-        renderCatalog();
-    </script>
-
+    renderProducts();
+    updateCart();
+  </script>
 </body>
 </html>
-
